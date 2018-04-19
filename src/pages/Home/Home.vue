@@ -3,6 +3,7 @@
     <home-header></home-header>
     <home-slide></home-slide>
     <home-icon></home-icon>
+    <home-recommend></home-recommend>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import HomeHeader from '../components/Header'
 import HomeSlide from '../components/Slideshow'
 import HomeIcon from '../components/Icons'
+import HomeRecommend from '../components/Recommend'
 export default {
   data () {
     return {
@@ -19,7 +21,8 @@ export default {
   components: {
     HomeHeader,
     HomeSlide,
-    HomeIcon
+    HomeIcon,
+    HomeRecommend
   }
 }
 </script>
