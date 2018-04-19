@@ -2,13 +2,14 @@
   <div class="home">
     <home-header></home-header>
     <home-slide></home-slide>
-    <div>testasa</div>
+    <home-icon></home-icon>
   </div>
 </template>
 
 <script>
 import HomeHeader from '../components/Header'
 import HomeSlide from '../components/Slideshow'
+import HomeIcon from '../components/Icons'
 export default {
   data () {
     return {
@@ -17,7 +18,8 @@ export default {
   },
   components: {
     HomeHeader,
-    HomeSlide
+    HomeSlide,
+    HomeIcon
   }
 }
 </script>
