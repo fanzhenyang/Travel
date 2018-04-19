@@ -2,7 +2,6 @@
   <div class="home">
     <home-header></home-header>
     <home-slide></home-slide>
-    <div>testasa</div>
   </div>
 </template>
 
