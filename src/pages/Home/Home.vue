@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <home-header></home-header>
-    <home-slide></home-slide>
+    <home-slide :list="swiperList"></home-slide>
     <home-icon></home-icon>
     <home-recommend></home-recommend>
     <home-weekend></home-weekend>
@@ -14,10 +14,12 @@ import HomeSlide from '../components/Slideshow'
 import HomeIcon from '../components/Icons'
 import HomeRecommend from '../components/Recommend'
 import HomeWeekend from '../components/Weekend'
+import axios from 'axios'
 export default {
   data () {
     return {
-      imgNum: [1, 2, 3, 4, 5]
+      city: '',
+      swiperList: []
     }
   },
   components: {
@@ -26,6 +28,25 @@ export default {
     HomeIcon,
     HomeRecommend,
     HomeWeekend
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/index.json')
+        .then(res => {
+          this.getHomeInfoSucc(res)
+        })
+    },
+    getHomeInfoSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.swiperList = data.swiperList
+        console.log(this.swiperList)
+      }
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
   }
 }
 </script>

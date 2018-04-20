@@ -2,7 +2,7 @@
   <div class="wrapper">
     <swiper :options="swiperOption">
       <!-- slides -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img :src="item.imgUrl" class="swiper-img" />
       </swiper-slide>
       <!-- Optional controls -->
@@ -14,6 +14,10 @@
 <script>
 export default {
   props: {
+    list: {
+      type: [Array, Object],
+      required: true
+    }
   },
   data () {
     return {
@@ -21,21 +25,16 @@ export default {
         pagination: '.swiper-pagination',
         loop: true
       },
-      swiperList: [
-        {
-          id: '001',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/14/21f410d1016c8702.jpg_640x200_84d0effe.jpg'
-        },
-        {
-          id: '002',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/58/f55d3bc7fe9cd502.jpg_640x200_4153eac0.jpg'
-        }
-      ]
+      swiperList: this.list
     }
   },
   methods: {
+    imgShow () {
+      console.log(this.list)
+    }
   },
-  created: function () {
+  mounted () {
+    this.imgShow()
   }
 }
 </script>
