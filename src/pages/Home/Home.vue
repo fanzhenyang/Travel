@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <home-header></home-header>
-    <home-slide :list="swiperList"></home-slide>
-    <home-icon></home-icon>
-    <home-recommend></home-recommend>
-    <home-weekend></home-weekend>
+    <home-slide :list="swiperList" v-if="swiperList.length>0"></home-slide>
+    <home-icon :list="iconList" v-if="iconList.length>0"></home-icon>
+    <home-recommend :list="recommendList" v-if="recommendList.length>0"></home-recommend>
+    <home-weekend :list="weekendList" v-if="weekendList.length>0"></home-weekend>
   </div>
 </template>
 
@@ -18,8 +18,10 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      city: '',
-      swiperList: []
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
     }
   },
   components: {
@@ -28,6 +30,9 @@ export default {
     HomeIcon,
     HomeRecommend,
     HomeWeekend
+  },
+  mounted () {
+    this.getHomeInfo()
   },
   methods: {
     getHomeInfo () {
@@ -38,15 +43,15 @@ export default {
     },
     getHomeInfoSucc (res) {
       res = res.data
+      console.log(res)
       if (res.ret && res.data) {
         const data = res.data
         this.swiperList = data.swiperList
-        console.log(this.swiperList)
+        this.iconList = data.iconList
+        this.recommendList = data.recommendList
+        this.weekendList = data.weekendList
       }
     }
-  },
-  mounted () {
-    this.getHomeInfo()
   }
 }
 </script>

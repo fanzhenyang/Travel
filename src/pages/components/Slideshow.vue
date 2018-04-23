@@ -2,7 +2,7 @@
   <div class="wrapper">
     <swiper :options="swiperOption">
       <!-- slides -->
-      <swiper-slide v-for="item of list" :key="item.id">
+      <swiper-slide v-for="item of swiperList" :key="item.id">
         <img :src="item.imgUrl" class="swiper-img" />
       </swiper-slide>
       <!-- Optional controls -->
@@ -23,14 +23,17 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
+        loop: true,
+        autoplay: true,
+        autoplay: 4000
       },
       swiperList: this.list
     }
   },
   methods: {
     imgShow () {
-      console.log(this.list)
+      // console.log(this.list)
+      // console.log(this.swiperList)
     }
   },
   mounted () {

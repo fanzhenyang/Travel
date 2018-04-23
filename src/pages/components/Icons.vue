@@ -1,10 +1,10 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="icon"  v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img  class="icon-img-content" :src="item.iconUrl" />
+            <img  class="icon-img-content" :src="item.imgUrl" />
           </div>
           <p class="icon-desc">{{item.desc}}</p>
         </div>
@@ -15,60 +15,17 @@
 
 <script>
 export default {
+  props: {
+    list: {
+      type: [Array, Object]
+    }
+  },
   data () {
     return {
-      iconList: [
-        {
-          id: '0001',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        },
-        {
-          id: '0002',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png',
-          desc: '踏青赏花'
-        },
-        {
-          id: '0003',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '必游榜单'
-        },
-        {
-          id: '0004',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-          desc: '一日游'
-        },
-        {
-          id: '0005',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/97/02f5043b51b2102.png',
-          desc: '情迷九寨'
-        },
-        {
-          id: '0006',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
-          desc: '蓉城七景'
-        },
-        {
-          id: '0007',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png',
-          desc: '成都周边'
-        },
-        {
-          id: '0008',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png',
-          desc: '七日游'
-        },
-        {
-          id: '0009',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-          desc: '演出'
-        },
-        {
-          id: '00010',
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png',
-          desc: '全部玩乐'
-        }
-      ]
+      iconList: this.list,
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {
