@@ -10,10 +10,12 @@
       搜索旅行地/酒店/景点
     </div>
     <!--右边城市列表-->
-    <div class="h-right">
-      城市
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+    <router-link to="/city">
+      <div class="h-right">
+        城市
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </header>
 </template>
 
