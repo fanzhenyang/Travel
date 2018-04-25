@@ -1,17 +1,23 @@
 <template>
   <ul class="list">
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
+    <li class="item" v-for="(item, key) of letter" :key="key">{{key}}</li>
   </ul>
 </template>
 
 <script>
 export default {
+  props: {
+    letter: {
+      type: [Object]
+    }
+  },
   data () {
-    return {}
+    return {
+      letterList: this.letter
+    }
+  },
+  mounted () {
+    console.log(this.letter)
   }
 }
 </script>
