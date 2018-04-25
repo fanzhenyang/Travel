@@ -2,8 +2,8 @@
   <div>
     <home-city></home-city>
     <city-search></city-search>
-    <city-list :city="popularCityList" :cities="cities" v-if="popularCityList.length>0"></city-list>
-    <city-alphabet :letter="cities"></city-alphabet>
+    <city-list :letter="letter" :city="popularCityList" :cities="cities" v-if="popularCityList.length>0"></city-list>
+    <city-alphabet :letter="cities" @change="handleLetterChage"></city-alphabet>
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
   data () {
     return {
       cities: {},
-      popularCityList: []
+      popularCityList: [],
+      letter: ''
     }
   },
   components: {
@@ -37,10 +38,11 @@ export default {
       if (res.ret && res.data) {
         const data = res.data
         this.cities = data.cities
-        console.log(this.cities)
         this.popularCityList = data.hotCities
       }
-      // console.log(res)
+    },
+    handleLetterChage (letter) {
+      this.letter = letter
     }
   },
   mounted () {

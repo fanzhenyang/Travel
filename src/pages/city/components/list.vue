@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) of cities" :key="key">
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
@@ -36,6 +36,9 @@ export default {
     },
     cities: {
       type: [Object]
+    },
+    letter: {
+      type: [String]
     }
   },
   data () {
@@ -45,7 +48,15 @@ export default {
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper) // 引用了插件达到原生APP效果滚动
-    console.log(this.popularCityList)
+  },
+  watch: { // 监听器
+    letter () {
+      if (this.letter) {
+        // element获取到是一个数组,取第一个
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>
