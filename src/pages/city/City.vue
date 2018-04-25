@@ -1,7 +1,7 @@
 <template>
   <div>
     <home-city></home-city>
-    <city-search></city-search>
+    <city-search :cities="cities"></city-search>
     <city-list :letter="letter" :city="popularCityList" :cities="cities" v-if="popularCityList.length>0"></city-list>
     <city-alphabet :letter="cities" @change="handleLetterChage"></city-alphabet>
   </div>
