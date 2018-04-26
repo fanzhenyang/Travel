@@ -12,7 +12,8 @@
     <!--右边城市列表-->
     <router-link to="/city">
       <div class="h-right">
-        城市
+        <!-- {{this.$store.state.city}} -->
+        {{this.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
@@ -20,12 +21,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
   },
   data () {
     return {
     }
+  },
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -55,7 +60,8 @@ export default {
     color: #ccc
     background: #fff
   .h-right
-    width: 1.24rem
+    min-width: 1.24rem
+    padding: 0 .1rem
     color: #fff
     .arrow-icon
       margin-left: -.04rem
