@@ -45,6 +45,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () { // 与activated相对应（页面即将被隐藏或者是被替换得时候执行）
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
