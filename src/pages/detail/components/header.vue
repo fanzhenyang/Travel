@@ -77,6 +77,7 @@ export default {
   color: #fff
   background: #00bcd4
   font-size: .32rem
+  z-index: 20
   .header-flxed-back
     position: absolute
     width: .64rem
