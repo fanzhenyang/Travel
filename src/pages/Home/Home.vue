@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import HomeHeader from './components/Header'
 import HomeSlide from './components/Slideshow'
 import HomeIcon from './components/Icons'
 import HomeRecommend from './components/Recommend'
@@ -27,7 +26,7 @@ export default {
     }
   },
   components: {
-    HomeHeader,
+    HomeHeader: () => import('./components/Header'), // 异步加载组件得意思
     HomeSlide,
     HomeIcon,
     HomeRecommend,
